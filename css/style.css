@@ -23,7 +23,7 @@ header{
     align-items: center;/*alinha os itens verticalmente ao centro*/
     justify-content: space-between;/*espaço entre os itens(logo de um lado e menu do outro)*/
     flex-wrap: wrap;/*permite quera de linhas em telas pequenas*/
-    gap: irem;/*espaçamento entre os itens flexiveis*/
+    gap: 1rem;/*espaçamento entre os itens flexiveis*/
     box-shadow: 0 2px 20px rgba(0,0,0,0.25);/*sombra: eixo x eixo y desfoque na cor*/
     position:sticky;/*grudar no topo ao rolar a pagina*/
     top: 0;/*distancia do topo ao grudar*/
@@ -33,10 +33,66 @@ header{
 }
 header img{
     height: 60px;/*fixando a altura da imagem em pixel*/
-    width: auto;/*ajusta a largura automaticamente de acordo com a altura (mantem proporcional a imagem)*/transition: transform 0.3s ease;/*transição suave de 3 segundos para a animação*/ 
+    width: auto;/*ajusta a largura automaticamente de acordo com a altura (mantem proporcional a imagem)*/
+    transition: transform 0.3s ease;/*transição suave de 3 segundos para a animação*/ 
 }
 header img:hover{/*hover 
 = quando passa o mouse por cima faz alguma coisa*/
 transform: scale(1.05);/*aumenta 5% do tamanho da imagem original*/
 
+}
+nav a{
+    text-decoration: none;/*remove o sublinhado padrão dos links*/
+    color: #764ba2;/*defino uma cor do texto roxo*/
+    font-weight: 600;/*peso da fonte (semi negrito)*/
+    padding: 0.5rem 1rem;/*8px em cima/baixo e 16px nas laterais*/
+    border-radius: 25px;/*bordas arredondadas*/
+    transition: all 0.3s ease;/*transição suave para todas as propriedades*/
+    position: relative;/*necessário para o pseudo-elemento ::after*/
+
+}
+nav a:hover{
+    background-color: #764ba2;
+    color: white;
+    transform: translateY(-2px);/*move 2 pixels para cima*/
+    box-shadow: 0 5px 15px rgba(118, 75, 162, 0.3);/*sombra roxa suave*/
+}
+nav a::after{/*pseudo elemento para criar a linha animada abaixo dos links*/
+    content: '';/*necessário para criar o elemento*/
+    position: absolute;/*posição em relação ao elemento*/
+    bottom: 0;/*cola na parte inferior*/
+    left: 50%;/*começa do meio*/
+    transform: translateX(-50%);/*centraliza horizontalmente*/
+    width: 0;/*começa com a largura 0*/
+    height: 2px;/*altura da linha*/
+    background-color: #764ba2;
+    transition: width 0.3s ease;/*anima apenas a largura*/
+
+}
+nav a:hover::after{
+    width: 80%;/*expande para 80% da largura do link*/
+
+}
+/*===CONTEÚDO PRINCIPAL===*/
+main{
+    max-width: 1200px;/*largura maxima em pixels*/
+    margin: 2rem auto;/*32px cima/baixo auto nas laterais (centraliza)*/
+    padding: 2rem;/*espaçamento interno de 32px em todos os lados*/
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;/*borda arredondada*/
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);/*sombra um pouco mais pronunciada*/
+    backdrop-filter: blur(10px);/*efeito de desfoque no fundo*/
+    animation: slideIn 0.5s ease-out;/*animação de entrada*/
+
+}
+/*===DEFINIÇÃO DA ANIMAÇÃO DE SLIDEIN*/
+@keyframes slideIn {
+    from{/*estado inicial*/
+    opacity: 0;/*invisivel*/
+     transform: translateY(30px);/*30px para baixo*/
+    }
+    to{ /*estado final*/
+        opacity: 1;/*visivel*/
+        transform: translateY(0);/*posição original*/
+    }
 }
